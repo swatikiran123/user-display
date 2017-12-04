@@ -1,2 +1,2 @@
 
-# user Display in different views.
+# User data is displayed in different views.
