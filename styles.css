@@ -1,0 +1,125 @@
+
+
+/*  panel styles*/
+
+.panel {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .05);
+    -moz-box-shadow: 0 0 1px 1px #fff;
+          box-shadow: 0 0 1px 1px  rgba(0, 0, 0, .05);
+}
+
+
+/*  panel padding styles*/
+
+.panelpad{
+	padding-left: 55px;
+}
+.panelpdmd{
+  padding-left: 65px;
+}
+.panelpdlg{
+  padding-left: 110px;
+}
+
+/*  panel background*/
+/*.panel-bg{
+	background-image: url('../images/background.jpg');
+	
+}*/
+
+
+/*  panel picture styles*/
+.userpic{
+  width:50px;
+  height:45px;
+}
+.userpicmd{
+  width:60px;
+  height:55px;
+}
+.userpiclg{
+  width:100px;
+  height:95px;
+}
+.userpic-bullet{
+  width:50px;
+  height:45px;
+}
+.capital{
+  text-transform: capitalize;
+}
+/* text styles */
+/* Text styles */
+.text-highlight{
+  font-size: 16px;
+  font-family: Arial;
+  color:#000000;
+}
+
+.text-big{
+  font-size: 1.6em;
+  font-family:Arial;
+  color:#000000;
+}
+
+.text-medium{
+  font-size: 14px;
+  color:#000000;
+  /*font-family:"gtWalsheimMediumWeb", Arial, sans-serif;*/
+  font-family: Arial;
+
+
+}
+
+.text-small{
+  font-size: 0.9em;
+  color:#000000;
+  /*font-family:"gtWalsheimLightWeb", Arial, sans-serif;*/
+  font-family:  Arial;
+
+}
+
+.text-xsmall{
+  font-size: 10px;
+  color:#000000;
+  /*font-family:"gtWalsheimMediumWeb", Arial, sans-serif;*/
+  font-family:  Arial;
+
+}
+
+
+
+.text-desc{
+  font-size: 12px;
+  /*font-family:"gtWalsheimWeb", Arial, sans-serif;*/
+  font-family:  Arial;
+  color:#000000;
+}
+
+
+/* error message styles */
+.messagenotify{
+  font-size: 0.9em;
+  font-style: italic;
+  color:#000000;
+
+}
+
+ a:hover {text-decoration: none;}
+/* styles specific with job details screen*/
+
+/*.panel{
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #000000;
+}*/
+.richTextCotnt{
+  /*font-family: workSansMedium;*/
+  font-family:  Arial;
+  font-size: 1.3em;
+
+}
