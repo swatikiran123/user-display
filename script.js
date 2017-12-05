@@ -18,7 +18,7 @@ angular.module('userdisplayDirective', [])
       return;
     }
 
-    $http.get(userApiEndPoint + $scope.userId).success(function(response) {
+    $http.get(userApiEndPoint).success(function(response) {
       if(response!=null)
       {
         $scope.userModel = response;
@@ -45,7 +45,7 @@ angular.module('userdisplayDirective', [])
     controller: 'userdisplayDirectiveControllerMain',
     templateUrl: '/userDisplay/templates/userdisplay.html',
     scope: {
-      userId: "=userId",
+      // userId: "=userId",
       viewMode: "=viewMode",
       userApiEndPoint: "=userApiEndPoint"
     },
