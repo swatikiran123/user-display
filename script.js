@@ -2,11 +2,11 @@
 
 angular.module('userdisplayDirective', [])
 .controller('userdisplayDirectiveControllerMain', ['$scope', '$http','API', function($scope, $http, API) {
-
+console.log("in side the directive")
   // user rest api constant
   var userApiEndPoint = $scope.userApiEndPoint;
   $scope.loading = true;
-
+console.log(userApiEndPoint)
   if($scope.userModel === undefined || $scope.userModel === "")
     $scope.showFlag = "none";
   else
@@ -21,6 +21,7 @@ angular.module('userdisplayDirective', [])
     $http.get(userApiEndPoint).success(function(response) {
       if(response!=null)
       {
+        console.log(response);
         $scope.userModel = response;
         $scope.userId = response._id;
         $scope.showFlag = "user";
