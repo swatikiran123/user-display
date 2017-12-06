@@ -66,7 +66,7 @@ angular.module('userdisplayDirective', [])
 .directive('userdisplay', function() {
   return {
     controller: 'userdisplayDirectiveControllerMain',
-    templateUrl: '/userDisplay/templates/userdisplay.html',
+    templateUrl: 'templates/userdisplay.html',
     scope: {
       // userId: "=userId",
       viewMode: "=viewMode",
@@ -84,66 +84,66 @@ angular.module('userdisplayDirective', [])
         console.log("*****************************")
         if(viewmode === "nameonly"){
           console.log("*****************************")
-          console.log("template:/user-display/templates/nameOnlyPanel.html")
+          console.log("template:templates/nameOnlyPanel.html")
           console.log("*****************************")
-          return "/user-display/templates/nameOnlyPanel.html";
+          return "templates/nameOnlyPanel.html";
         }
         if(viewmode === "credonly"){
           console.log("*****************************")
-          console.log("template:/user-display/templates/credScore.html")
+          console.log("template:templates/credScore.html")
           console.log("*****************************")
-          return "/user-display/templates/credScore.html";
+          return "templates/credScore.html";
         }
         if(viewmode === "summaryonly"){
           console.log("*****************************")
-          console.log("template:/user-display/templates/summaryOnlyPanel.html")
+          console.log("template:templates/summaryOnlyPanel.html")
           console.log("*****************************")
-          return "/user-display/templates/summaryOnlyPanel.html";
+          return "templates/summaryOnlyPanel.html";
         }
 
         if(viewmode === "bulletsmallonly"){
           console.log("*****************************")
-          console.log("template:/user-display/templates/bulletSmallOnlyPanel.html")
+          console.log("template:templates/bulletSmallOnlyPanel.html")
           console.log("*****************************")
-          return "/user-display/templates/bulletSmallOnlyPanel.html";
+          return "templates/bulletSmallOnlyPanel.html";
         }
 
         if(viewmode === "bulletmediumonly"){
           console.log("*****************************")
-          console.log("template:/user-display/templates/bulletMediumOnlyPanel.html")
+          console.log("template:templates/bulletMediumOnlyPanel.html")
           console.log("*****************************")
-          return "/user-display/templates/bulletMediumOnlyPanel.html";
+          return "templates/bulletMediumOnlyPanel.html";
         }
 
         if(viewmode === "emailonly"){
           console.log("*****************************")
-          console.log("template:/user-display/templates/emailOnlyPanel.html")
+          console.log("template:templates/emailOnlyPanel.html")
           console.log("*****************************")
-          return "/user-display/templates/emailOnlyPanel.html";
+          return "templates/emailOnlyPanel.html";
         }
 
         if(viewmode === "small")
         {
           console.log("*****************************")
-          console.log("template:/user-display/templates/smallpanel.html")
+          console.log("template:templates/smallpanel.html")
           console.log("*****************************")
-          return "/user-display/templates/smallpanel.html";
+          return "templates/smallpanel.html";
         }
 
         if(viewmode === "large")
         {
           console.log("*****************************")
-          console.log("template:/user-display/templates/largepanel.html")
+          console.log("template:templates/largepanel.html")
           console.log("*****************************")
-          return "/user-display/templates/largepanel.html";
+          return "templates/largepanel.html";
         }
 
         if(viewmode === "medium")
         {
           console.log("*****************************")
-          console.log("template:/user-display/templates/mediumpanel.html")
+          console.log("template:templates/mediumpanel.html")
           console.log("*****************************")
-          return "/user-display/templates/mediumpanel.html";
+          return "templates/mediumpanel.html";
         }
       }
     }
