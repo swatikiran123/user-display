@@ -2,66 +2,68 @@
 
 angular.module('userdisplayDirective', [])
 .controller('userdisplayDirectiveControllerMain', ['$scope', '$http','API', function($scope, $http, API) {
+'use strict';
 
-  console.log("in side the directive")
-  // user rest api constant
-  var userApiEndPoint = $scope.userApiEndPoint;
-  $scope.loading = true;
-  console.log("*****************************")
-  console.log(userApiEndPoint)
-  console.log("*****************************")
-  // console.log("*****************************")
-  // console.log($scope.userModel)
-  // console.log("*****************************")
+angular
+.module('ng1UserPanel')
+.controller('ng1UserPanelControllerMain', ['$scope', '$http', function($scope, $http) {
 
-  // if($scope.userModel === undefined || $scope.userModel === "")
-  //   $scope.showFlag = "none";
-  // else
-  //   $scope.showFlag = "user";
+  // users and usersEmail rest api constants
+  var userApiEndPoint = 'http://localhost:8080/api/v1/secure/admin/users/';
+  var userEmailApiEndPoint = 'http://localhost:8080/api/v1/secure/admin/users/email/';
 
-  $scope.getUser = function(){
-    console.log("*****************************")
-    console.log("inside get user function")
-    console.log("*****************************")
-
-    // if($scope.userId===""){
-    //   $scope.showFlag = "none";
-    //   return;
-    // }
-
-    $http.get(userApiEndPoint).success(function(response) {
-     console.log("*****************************")
-     console.log("response 33")
-     console.log(response);
-
-     console.log("*****************************")
-     if(response!=null)
-     {
-      console.log("*****************************")
-      console.log("after get http user details")
-      console.log(response);
-      console.log("*****************************")
-      $scope.userModel = response;
-      $scope.userId = response._id;
-      $scope.showFlag = "user";
-      $scope.loading = false;
-    }
-  })
-    .error(function(response, status){
-      $scope.showFlag = "noUser";
-      if(status===404)
-      {
-        message = "User not found";
-      }
-      else
-        console.log("error with userView directive");
-    });
-    console.log("*****************************")
-    console.log($scope.showFlag)
-    console.log("*****************************")
+  if($scope.userModel === undefined || $scope.userModel === '')
+  {
+    $scope.showFlag = 'none';
+  }
+  else{
+    $scope.showFlag = 'user';
   }
 
+  $scope.getUser = function(){
+    var url= '';
+    if($scope.userId!=='' && $scope.userId!==undefined){
+      url=userApiEndPoint + $scope.userId;
+    }
+    
+    if ($scope.userEmail!=='' && $scope.userEmail!==undefined) {
+      url=userEmailApiEndPoint + $scope.userEmail;
+    }
+
+    $http.get(url).success(function(response) {
+
+      if(response){
+        $scope.userModel = response;
+        $scope.userId = response._id;
+        $scope.userEmail = response.email;
+        $scope.showFlag = 'user';
+      }
+
+      else{
+        $scope.showFlag = 'noUser';
+        $scope.message = 'User not found';
+      }
+
+    })
+    .error(function(response, status){
+      $scope.showFlag = 'noUser';
+      if(status===404)
+      {
+        $scope.message = 'User not found';
+      }
+    });
+  }; // end of getUser method
+  
+  if($scope.switchMode === 'edit')
+  {  
+    if($scope.userId)
+    { 
+      $scope.getUser(); // autoload data
+    }
+    $scope.showFlag = 'user';
+  }
 }])
+
 .directive('user', function($templateCache) {
 
   var TEMPLATE_URL_USERPICKER = '/userpicker/index.html';
