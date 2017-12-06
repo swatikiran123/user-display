@@ -6,13 +6,23 @@ console.log("in side the directive")
   // user rest api constant
   var userApiEndPoint = $scope.userApiEndPoint;
   $scope.loading = true;
+  console.log("*****************************")
 console.log(userApiEndPoint)
+  console.log("*****************************")
+  console.log("*****************************")
+  console.log($scope.userModel)
+  console.log("*****************************")
+
   if($scope.userModel === undefined || $scope.userModel === "")
     $scope.showFlag = "none";
   else
     $scope.showFlag = "user";
 
   $scope.getUser = function(){
+  console.log("*****************************")
+    console.log("inside get user function")
+  console.log("*****************************")
+
     if($scope.userId===""){
       $scope.showFlag = "none";
       return;
@@ -21,7 +31,10 @@ console.log(userApiEndPoint)
     $http.get(userApiEndPoint).success(function(response) {
       if(response!=null)
       {
+          console.log("*****************************")
+    console.log("after get http user details")
         console.log(response);
+  console.log("*****************************")
         $scope.userModel = response;
         $scope.userId = response._id;
         $scope.showFlag = "user";
@@ -56,42 +69,72 @@ console.log(userApiEndPoint)
       scope.getTemplate = function(){
 
         var viewmode = scope.viewMode.toLowerCase();
-
+console.log("*****************************")
+    console.log("get template viewmode")
+        console.log(viewmode);
+  console.log("*****************************")
         if(viewmode === "nameonly"){
-          return "/public/d/userDisplay/templates/nameOnlyPanel.html";
+          console.log("*****************************")
+    console.log("template:/user-display/templates/nameOnlyPanel.html")
+  console.log("*****************************")
+          return "/user-display/templates/nameOnlyPanel.html";
         }
         if(viewmode === "credonly"){
-          return "/public/d/userDisplay/templates/credScore.html";
+          console.log("*****************************")
+    console.log("template:/user-display/templates/credScore.html")
+  console.log("*****************************")
+          return "/user-display/templates/credScore.html";
         }
         if(viewmode === "summaryonly"){
-          return "/public/d/userDisplay/templates/summaryOnlyPanel.html";
+          console.log("*****************************")
+    console.log("template:/user-display/templates/summaryOnlyPanel.html")
+  console.log("*****************************")
+          return "/user-display/templates/summaryOnlyPanel.html";
         }
 
         if(viewmode === "bulletsmallonly"){
-          return "/public/d/userDisplay/templates/bulletSmallOnlyPanel.html";
+          console.log("*****************************")
+    console.log("template:/user-display/templates/bulletSmallOnlyPanel.html")
+  console.log("*****************************")
+          return "/user-display/templates/bulletSmallOnlyPanel.html";
         }
 
         if(viewmode === "bulletmediumonly"){
-          return "/public/d/userDisplay/templates/bulletMediumOnlyPanel.html";
+          console.log("*****************************")
+    console.log("template:/user-display/templates/bulletMediumOnlyPanel.html")
+  console.log("*****************************")
+          return "/user-display/templates/bulletMediumOnlyPanel.html";
         }
 
         if(viewmode === "emailonly"){
-          return "/public/d/userDisplay/templates/emailOnlyPanel.html";
+          console.log("*****************************")
+    console.log("template:/user-display/templates/emailOnlyPanel.html")
+  console.log("*****************************")
+          return "/user-display/templates/emailOnlyPanel.html";
         }
 
         if(viewmode === "small")
         {
-          return "/public/d/userDisplay/templates/smallpanel.html";
+          console.log("*****************************")
+    console.log("template:/user-display/templates/smallpanel.html")
+  console.log("*****************************")
+          return "/user-display/templates/smallpanel.html";
         }
 
         if(viewmode === "large")
         {
-          return "/public/d/userDisplay/templates/largepanel.html";
+          console.log("*****************************")
+    console.log("template:/user-display/templates/largepanel.html")
+  console.log("*****************************")
+          return "/user-display/templates/largepanel.html";
         }
 
         if(viewmode === "medium")
         {
-          return "/public/d/userDisplay/templates/mediumpanel.html";
+          console.log("*****************************")
+    console.log("template:/user-display/templates/mediumpanel.html")
+  console.log("*****************************")
+          return "/user-display/templates/mediumpanel.html";
         }
       }
     }
