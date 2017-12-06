@@ -23,12 +23,17 @@ console.log(userApiEndPoint)
     console.log("inside get user function")
   console.log("*****************************")
 
-    if($scope.userId===""){
-      $scope.showFlag = "none";
-      return;
-    }
+    // if($scope.userId===""){
+    //   $scope.showFlag = "none";
+    //   return;
+    // }
 
     $http.get(userApiEndPoint).success(function(response) {
+       console.log("*****************************")
+    console.log("response 33")
+        console.log(response);
+
+  console.log("*****************************")
       if(response!=null)
       {
           console.log("*****************************")
@@ -50,6 +55,9 @@ console.log(userApiEndPoint)
       else
         console.log("error with userView directive");
     });
+          console.log("*****************************")
+    console.log($scope.showFlag)
+          console.log("*****************************")
   }
 
 }])
