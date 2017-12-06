@@ -66,7 +66,7 @@ angular.module('userdisplayDirective', [])
 .directive('userdisplay', function() {
   return {
     controller: 'userdisplayDirectiveControllerMain',
-    templateUrl: 'templates/userdisplay.html',
+    templateUrl: 'bower_components/user-display/templates/userdisplay.html',
     scope: {
       // userId: "=userId",
       viewMode: "=viewMode",
@@ -84,66 +84,66 @@ angular.module('userdisplayDirective', [])
         console.log("*****************************")
         if(viewmode === "nameonly"){
           console.log("*****************************")
-          console.log("template:templates/nameOnlyPanel.html")
+          console.log("template:bower_components/user-display/templates/nameOnlyPanel.html")
           console.log("*****************************")
-          return "templates/nameOnlyPanel.html";
+          return "bower_components/user-display/templates/nameOnlyPanel.html";
         }
         if(viewmode === "credonly"){
           console.log("*****************************")
-          console.log("template:templates/credScore.html")
+          console.log("template:bower_components/user-display/templates/credScore.html")
           console.log("*****************************")
-          return "templates/credScore.html";
+          return "bower_components/user-display/templates/credScore.html";
         }
         if(viewmode === "summaryonly"){
           console.log("*****************************")
-          console.log("template:templates/summaryOnlyPanel.html")
+          console.log("template:bower_components/user-display/templates/summaryOnlyPanel.html")
           console.log("*****************************")
-          return "templates/summaryOnlyPanel.html";
+          return "bower_components/user-display/templates/summaryOnlyPanel.html";
         }
 
         if(viewmode === "bulletsmallonly"){
           console.log("*****************************")
-          console.log("template:templates/bulletSmallOnlyPanel.html")
+          console.log("template:bower_components/user-display/templates/bulletSmallOnlyPanel.html")
           console.log("*****************************")
-          return "templates/bulletSmallOnlyPanel.html";
+          return "bower_components/user-display/templates/bulletSmallOnlyPanel.html";
         }
 
         if(viewmode === "bulletmediumonly"){
           console.log("*****************************")
-          console.log("template:templates/bulletMediumOnlyPanel.html")
+          console.log("template:bower_components/user-display/templates/bulletMediumOnlyPanel.html")
           console.log("*****************************")
-          return "templates/bulletMediumOnlyPanel.html";
+          return "bower_components/user-display/templates/bulletMediumOnlyPanel.html";
         }
 
         if(viewmode === "emailonly"){
           console.log("*****************************")
-          console.log("template:templates/emailOnlyPanel.html")
+          console.log("template:bower_components/user-display/templates/emailOnlyPanel.html")
           console.log("*****************************")
-          return "templates/emailOnlyPanel.html";
+          return "bower_components/user-display/templates/emailOnlyPanel.html";
         }
 
         if(viewmode === "small")
         {
           console.log("*****************************")
-          console.log("template:templates/smallpanel.html")
+          console.log("template:bower_components/user-display/templates/smallpanel.html")
           console.log("*****************************")
-          return "templates/smallpanel.html";
+          return "bower_components/user-display/templates/smallpanel.html";
         }
 
         if(viewmode === "large")
         {
           console.log("*****************************")
-          console.log("template:templates/largepanel.html")
+          console.log("template:bower_components/user-display/templates/largepanel.html")
           console.log("*****************************")
-          return "templates/largepanel.html";
+          return "bower_components/user-display/templates/largepanel.html";
         }
 
         if(viewmode === "medium")
         {
           console.log("*****************************")
-          console.log("template:templates/mediumpanel.html")
+          console.log("template:bower_components/user-display/templates/mediumpanel.html")
           console.log("*****************************")
-          return "templates/mediumpanel.html";
+          return "bower_components/user-display/templates/mediumpanel.html";
         }
       }
     }
