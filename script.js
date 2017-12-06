@@ -62,90 +62,124 @@ angular.module('userdisplayDirective', [])
   }
 
 }])
+.directive('user', function($templateCache) {
 
-.directive('userdisplay', function() {
+  var TEMPLATE_URL_USERPICKER = '/userpicker/index.html';
+
+  // Set the default template for this directive
+  $templateCache.put(TEMPLATE_URL_USERPICKER,
+      '<input type="text" name="user" id="user"  placeholder="User" ng-blur="getUser()" ng-model="userEmail" ng-minlength="1" ng-maxlength="75">'+
+      '<br>'+
+      '<ANY ng-switch="showFlag">'+
+      '<ANY ng-switch-when="user">'+
+          '<div ng-include = "getTemplate()"></div>'+
+       '</ANY>'+
+       '<ANY ng-switch-when="noUser">'+
+          '<div class="text-danger" style="width:180px;!important;">'+
+             'User not found!!!'+
+          '</div>'+
+       '</ANY>'+
+       '<ANY ng-switch-default>'+
+          '<div class="text-info" style="width:180px;!important;">'+
+             '<!-- Default panel -->'+
+          '</div>'+
+       '</ANY>'+
+    '</ANY>'
+  );
+
+  var TEMPLATE_URL_SMALLPANEL ='/userpicker/smallpanel.html';
+  
+  // Set the smallpanel template for this directive
+  $templateCache.put(TEMPLATE_URL_SMALLPANEL,
+    '<br>'+
+    '<div class="panel  panel-default" class="panel-bg" >'+
+      '<div class="panel-body">'+
+        '<div class="pull-left">'+
+          '<img src="bower_components/ng1UserPanel/src/images/default_male300x300-aae6ae0235b6cd78cee8df7ae19f6085.png" class="img-circle userpic">'+
+        '</div>'+
+      '<div class="panelpad">'+
+        '<div class="text-highlight">{{userModel.name.first}} {{userModel.name.last}}</div>'+
+        '<div class="text-xsmall">{{userModel.jobTitle}}</div>'+
+        '<div class="text-xsmall">{{userModel.organization}}</div>'+
+      '</div>'+
+    '</div>'+
+    '</div>'
+  );
+
+  var TEMPLATE_URL_MEDPANEL ='/userpicker/mediumpanel.html';
+  
+  // Set the smallpanel template for this directive
+  $templateCache.put(TEMPLATE_URL_MEDPANEL,
+      '<br>'+
+      '<div class="panel panel-default">'+
+         '<div class="panel-body">'+
+            '<div class="pull-left">'+
+               '<img src="bower_components/ng1UserPanel/src/images/default_male300x300-aae6ae0235b6cd78cee8df7ae19f6085.png" class="img-circle userpicmd"> '+
+            '</div>'+
+            '<div class="panelpdmd">'+
+               '<div class="text-highlight">{{userModel.name.first}} {{userModel.name.last}}</div>'+
+               '<div class="text-xsmall">{{userModel.email}}</div>'+
+               '<div class="text-xsmall">{{userModel.jobTitle}}</div>'+
+               '<div class="text-xsmall">{{userModel.organization}}</div>'+
+            '</div>'+
+         '</div>'+
+      '</div>'+
+      '</div>'
+  );
+
+  var TEMPLATE_URL_LARGEPANEL ='/userpicker/largepanel.html';
+  
+  // Set the smallpanel template for this directive
+  $templateCache.put(TEMPLATE_URL_LARGEPANEL,
+      '<br>'+
+      '<div class="panel panel-default">'+
+         '<div class="panel-body ">'+
+            '<div class="pull-left">'+
+               '<img src="bower_components/ng1UserPanel/src/images/default_male300x300-aae6ae0235b6cd78cee8df7ae19f6085.png" class="img-circle userpiclg"> '+
+            '</div>'+
+            '<div class="panelpdlg">'+
+               '<div class="text-highlight">{{userModel.name.first}} {{userModel.name.last}}</div>'+
+               '<div class="text-xsmall">{{userModel.email}}</div>'+
+               '<div class="text-xsmall">{{userModel.jobTitle}}</div>'+
+               '<div class="text-xsmall">{{userModel.organization}}</div>'+
+               '<div class="text-desc">{{userModel.summary}}</div>'+
+            '</div>'+
+         '</div>'+
+      '</div>'+
+      '</div>'
+  );
   return {
-    controller: 'userdisplayDirectiveControllerMain',
-    templateUrl: 'bower_components/user-display/templates/userdisplay.html',
+    controller: 'ng1UserPanelControllerMain',
+    // templateUrl: 'templates/user-picker.html',
     scope: {
-      // userId: "=userId",
-      viewMode: "=viewMode",
-      userApiEndPoint: "=userApiEndPoint"
+      userModel: '=userModel',
+      userId: '=userId',
+      userEmail: '=userEmail',
+      viewType: '=viewType',
+      switchMode: '=switchMode',
+      userType: '@userType'
     },
-
-    link : function(scope,element,attrs)
+    templateUrl: function(element, attrs) {
+      return attrs.templateUrl || TEMPLATE_URL_USERPICKER;
+    },
+    link : function(scope)
     {
       scope.getTemplate = function(){
 
-        var viewmode = scope.viewMode.toLowerCase();
-        console.log("*****************************")
-        console.log("get template viewmode")
-        console.log(viewmode);
-        console.log("*****************************")
-        if(viewmode === "nameonly"){
-          console.log("*****************************")
-          console.log("template:bower_components/user-display/templates/nameOnlyPanel.html")
-          console.log("*****************************")
-          return "bower_components/user-display/templates/nameOnlyPanel.html";
-        }
-        if(viewmode === "credonly"){
-          console.log("*****************************")
-          console.log("template:bower_components/user-display/templates/credScore.html")
-          console.log("*****************************")
-          return "bower_components/user-display/templates/credScore.html";
-        }
-        if(viewmode === "summaryonly"){
-          console.log("*****************************")
-          console.log("template:bower_components/user-display/templates/summaryOnlyPanel.html")
-          console.log("*****************************")
-          return "bower_components/user-display/templates/summaryOnlyPanel.html";
-        }
+        var viewmode = scope.viewType.toLowerCase();
 
-        if(viewmode === "bulletsmallonly"){
-          console.log("*****************************")
-          console.log("template:bower_components/user-display/templates/bulletSmallOnlyPanel.html")
-          console.log("*****************************")
-          return "bower_components/user-display/templates/bulletSmallOnlyPanel.html";
-        }
-
-        if(viewmode === "bulletmediumonly"){
-          console.log("*****************************")
-          console.log("template:bower_components/user-display/templates/bulletMediumOnlyPanel.html")
-          console.log("*****************************")
-          return "bower_components/user-display/templates/bulletMediumOnlyPanel.html";
-        }
-
-        if(viewmode === "emailonly"){
-          console.log("*****************************")
-          console.log("template:bower_components/user-display/templates/emailOnlyPanel.html")
-          console.log("*****************************")
-          return "bower_components/user-display/templates/emailOnlyPanel.html";
-        }
-
-        if(viewmode === "small")
+        if(viewmode === 'small' && scope.userEmail!=='')
         {
-          console.log("*****************************")
-          console.log("template:bower_components/user-display/templates/smallpanel.html")
-          console.log("*****************************")
-          return "bower_components/user-display/templates/smallpanel.html";
+          return TEMPLATE_URL_SMALLPANEL;
+        }
+        if(viewmode === 'large'){
+          return TEMPLATE_URL_LARGEPANEL;
+        }
+        if(viewmode === 'medium'){
+          return TEMPLATE_URL_MEDPANEL;
         }
 
-        if(viewmode === "large")
-        {
-          console.log("*****************************")
-          console.log("template:bower_components/user-display/templates/largepanel.html")
-          console.log("*****************************")
-          return "bower_components/user-display/templates/largepanel.html";
-        }
-
-        if(viewmode === "medium")
-        {
-          console.log("*****************************")
-          console.log("template:bower_components/user-display/templates/mediumpanel.html")
-          console.log("*****************************")
-          return "bower_components/user-display/templates/mediumpanel.html";
-        }
-      }
+      };
     }
   };
 });
